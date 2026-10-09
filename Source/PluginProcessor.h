@@ -3,12 +3,9 @@
 #include "PresetManager.h"
 
 //==============================================================================
-// The Stinger — A tribute to the EDP Wasp (1978)
+// The Stinger — A tribute to Synths since 1978
 // AlphaAudio by William Ashley Music
 //
-// (Formerly "KillerBee" / "Anthophilia Plus". The Stinger name is now used
-// throughout the codebase for user-facing text. Internal class names like
-// WASPAlphaAudioProcessor have been left unchanged to keep the ABIs stable.)
 //==============================================================================
 
 //==============================================================================
@@ -117,11 +114,11 @@ namespace WaspParams
     static constexpr const char* MODENV_AMOUNT = "modenv_amount";
     static constexpr const char* MODENV_DEST = "modenv_dest"; // PW / LFO1 AMT / OSC1 LEVEL / OSC2 PITCH
 
-    // Velocity — depth of note velocity into Amp Env and Filter Env (original WASP/XT "VELOCITY" section)
+    // Velocity — depth of note velocity into Amp Env and Filter Env  
     static constexpr const char* VEL_TO_AMP = "vel_to_amp";
     static constexpr const char* VEL_TO_FILTER = "vel_to_filter";
 
-    // LFO delay (onset delay before the LFO starts affecting its target) — present on both LFOs in the original/XT
+    // LFO delay (onset delay before the LFO starts affecting its target)  
     static constexpr const char* LFO1_DELAY = "lfo1_delay";
     static constexpr const char* LFO2_DELAY = "lfo2_delay";
 
@@ -274,7 +271,8 @@ struct WaspFilter
 // Microprocessors", 1980) — the filter topology behind the TB-303's acid
 // squelch and widely used in late-90s software synths (TS-404 included) for
 // its more aggressive self-oscillation compared to a Moog-style ladder.
-// Single 12dB/octave stage; unlike WaspFilter this has no built-in 24dB mode.
+// Single 12dB/octave stage; unlike WaspFilter this has no built-in 24dB mode. 
+// This is still buggy at some configurations need to bug test more
 struct ChamberlinFilter
 {
     double low = 0.0, band = 0.0;
@@ -355,7 +353,7 @@ struct WaspEnv
 };
 
 //==============================================================================
-// One-shot AD "Mod Env" — matches the EDP WASP MOD ENV section: rises over
+// One-shot AD "Mod Env" — aims for EDP WASP MOD ENV section: rises over
 // Attack, falls over Decay, then sits at 0 (does NOT sustain or loop).
 // Retriggered on every note-on.
 struct WaspModEnv

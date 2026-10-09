@@ -121,7 +121,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout WASPAlphaAudioProcessor::cre
         juce::ParameterID{ FLT_PARALLEL_MIX, 1 }, "Filter Parallel Mix",
         juce::NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.5f)); // 0 = all Filter1, 1 = all Filter2
 
-    // Filter model: Ladder (default, unchanged behaviour) vs Chamberlin SVF
+    // Filter model: Ladder (default, unchanged behaviour) vs Chamberlin SVF May still be buggy
     // (TS-404/303-style acid character). Independent per filter.
     layout.add(std::make_unique<juce::AudioParameterChoice>(
         juce::ParameterID{ FLT_MODEL, 1 }, "Filter Model",
@@ -220,7 +220,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout WASPAlphaAudioProcessor::cre
         juce::ParameterID{ MODENV_DEST, 1 }, "Mod Env Destination",
         juce::StringArray{ "Pulse Width", "LFO1 Amount", "Osc1 Level", "Osc2 Pitch" }, 0));
 
-    // Velocity (original WASP / XT VELOCITY section)
+    // Velocity  
     layout.add(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID{ VEL_TO_AMP, 1 }, "Velocity to Amp",
         juce::NormalisableRange<float>(0.0f, 1.0f, 0.001f), 1.0f));
@@ -254,18 +254,10 @@ juce::AudioProcessorValueTreeState::ParameterLayout WASPAlphaAudioProcessor::cre
         juce::ParameterID{ DELAY_MIX, 1 }, "Delay Mix",
         juce::NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.0f)); // 0 = off by default, opt-in
 
-    // Master Volume — was missing entirely; this is the main practical fix for
-    // "everything gets quiet" since there was previously no way to compensate.
-    // Range and default chosen so unity (0 dB) sits at a sensible knob position,
-    // not buried at one extreme.
-    layout.add(std::make_unique<juce::AudioParameterFloat>(
+       layout.add(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID{ MASTER_VOLUME, 1 }, "Master Volume",
         juce::NormalisableRange<float>(-60.0f, 6.0f, 0.01f, 3.0f), 0.0f));
-
-    // ========================================================================
-    // ==== NEW: DX FM module (Alpha-DX compatibility layer) ====
-    // ========================================================================
-    // Master on/off. Default false so nothing changes for existing patches.
+   // Master on/off. Default false so nothing changes for existing patches.
     layout.add(std::make_unique<juce::AudioParameterBool>(
         juce::ParameterID{ DXFM_ENABLE, 1 }, "DX FM Enable", false));
 

@@ -414,9 +414,6 @@ void WASPAlphaAudioProcessorEditor::setupCombo(juce::ComboBox& box,
     box.setSelectedId(1, juce::dontSendNotification);
 }
 
-//==============================================================================
-// U-He style palette cycling. Groups are assigned distinct tones so adjacent
-// sections contrast (charcoal / mahogany / amber) as in Concept 1.
 void WASPAlphaAudioProcessorEditor::assignSectionPalettes()
 {
     secOsc.setPaletteIndex(0);
@@ -476,10 +473,7 @@ void WASPAlphaAudioProcessorEditor::paint(juce::Graphics& g)
     g.setGradientFill(accentGrad);
     g.fillRect(0, 33, getWidth(), 2);
 
-    // Plugin name — gradient text so it reads as "mastering hardware".
-    // Branding updated from "KillerBee" to "The Stinger" — shorter name
-    // means we can afford a slightly larger font without crowding the
-    // preset bar on the right.
+     
     {
         const auto font = juce::Font(juce::FontOptions("Courier New", 20.0f, juce::Font::bold));
         juce::Rectangle<int> nameArea(10, 0, 260, 34);
@@ -491,14 +485,12 @@ void WASPAlphaAudioProcessorEditor::paint(juce::Graphics& g)
         g.drawText("The Stinger", nameArea, juce::Justification::centredLeft, false);
     }
 
-    // Subtitle — repositioned to sit right after "The Stinger" wordmark,
-    // since the preset bar now occupies the right-hand strip of the header.
-    g.setColour(juce::Colour(WaspLookAndFeel::COL_TEXT_SECONDARY));
+       g.setColour(juce::Colour(WaspLookAndFeel::COL_TEXT_SECONDARY));
     g.setFont(juce::FontOptions("Courier New", 8.5f, juce::Font::plain));
     g.drawText("AlphaAudio  |  DronerrEdition  |  W.A.M.",
         268, 0, 200, 34, juce::Justification::centredLeft, false);
 
-    // Small amber dot accents — repositioned to just before the preset bar.
+  
     g.setColour(juce::Colour(WaspLookAndFeel::COL_WASP_AMBER));
     for (int i = 0; i < 3; ++i)
         g.fillEllipse((float)(getWidth() - 468 + i * 8), 14.0f, 5.0f, 5.0f);
@@ -511,17 +503,9 @@ void WASPAlphaAudioProcessorEditor::paint(juce::Graphics& g)
     g.drawText("OSC 3/SUB", 440, 40, 120, 12, juce::Justification::centredLeft, false);
 }
 
-//==============================================================================
-// RESIZED — preset bar lives in the top header strip; the seven layout
-// helpers lay out the rest of the panel exactly as before.
-//==============================================================================
-void WASPAlphaAudioProcessorEditor::resized()
+ void WASPAlphaAudioProcessorEditor::resized()
 {
-    // ==== Preset bar (top-right of the header strip) ====
-    // The header is 34px tall. The combo takes 20px of it, the four buttons
-    // sit immediately to its right, and a small right-edge margin keeps
-    // everything off the window edge.
-    //
+    
     // Layout: [ PRESET COMBO ............ ] [SAVE] [DELETE] [EXPORT] [FOLDER]
     const int barH = 20;
     const int barY = 7;             // vertically centred in the 34px header
@@ -908,10 +892,7 @@ void WASPAlphaAudioProcessorEditor::layoutRow7_CpuSaver()
     placeCell(bpVcoBinBtn, 2, 2);
 }
 
-//==============================================================================
-// ==== NEW: Preset management implementation ====
-//==============================================================================
-
+ 
 //==============================================================================
 void WASPAlphaAudioProcessorEditor::refreshPresetList()
 {

@@ -4,7 +4,7 @@
 
 //==============================================================================
 // The Stinger — Look and Feel
-// Analog Obsession "Mastering Hardware" theme.
+ 
 //==============================================================================
 class WaspLookAndFeel : public juce::LookAndFeel_V4
 {
@@ -312,11 +312,7 @@ public:
     }
 };
 
-//==============================================================================
-// Section panel — U-He style alternating tones, inverted header ribbon,
-// ribbed pinstripe texture behind modules
-//==============================================================================
-class WaspSection : public juce::Component
+ class WaspSection : public juce::Component
 {
 public:
     juce::String title;
@@ -344,8 +340,7 @@ public:
         g.setColour(paletteColour(paletteIndex));
         g.fillRoundedRectangle(b, 3.0f);
 
-        // --- Ribbed pinstripe texture behind the whole module (EDP Wasp homage) ---
-        {
+          {
             juce::Graphics::ScopedSaveState save(g);
             juce::Path clip;
             clip.addRoundedRectangle(b, 3.0f);
