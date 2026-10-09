@@ -1,0 +1,48 @@
+{
+  "Name": "ZoneDXSynth",
+  "Version": "1.0.0",
+  "Factory Info": {
+    "Vendor": "Wiliam Ashley Music",
+    "URL": "williamashley.music",
+    "E-Mail": "contact@williamashley.music",
+    "Flags": {
+      "Unicode": true,
+      "Classes Discardable": false,
+      "Component Non Discardable": false,
+    },
+  },
+  "Classes": [
+    {
+      "CID": "ABCDEF019182FAEB57414D415A445853",
+      "Category": "Audio Module Class",
+      "Name": "ZoneDXSynth",
+      "Vendor": "Wiliam Ashley Music",
+      "Version": "1.0.0",
+      "SDKVersion": "VST 3.8.0",
+      "Sub Categories": [
+        "Instrument",
+        "Synth",
+      ],
+      "Class Flags": 2,
+      "Cardinality": 2147483647,
+      "Snapshots": [
+      ],
+    },
+    {
+      "CID": "ABCDEF011234ABCD57414D415A445853",
+      "Category": "Component Controller Class",
+      "Name": "ZoneDXSynth",
+      "Vendor": "Wiliam Ashley Music",
+      "Version": "1.0.0",
+      "SDKVersion": "VST 3.8.0",
+      "Sub Categories": [
+        "Instrument",
+        "Synth",
+      ],
+      "Class Flags": 2,
+      "Cardinality": 2147483647,
+      "Snapshots": [
+      ],
+    },
+  ],
+}
